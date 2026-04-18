@@ -2,19 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Terminal, Shield, Lock, X } from 'lucide-react';
 
-type ScreenState = 'landing' | 'login' | 'result';
-
 export default function App() {
-  const [screen, setScreen] = useState<ScreenState>('landing');
+  const [screen, setScreen] = useState('landing');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef(null);
 
   const handleEnter = () => {
     setScreen('login');
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     if (password === 'bob67') {
       setScreen('result');
