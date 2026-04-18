@@ -1,13 +1,109 @@
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="./src/main.jsx"></script>
-  </body>
-</html>
+    <title>Proxy Hunter | Secure Terminal</title>
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body class="selection:bg-[#00ff41]/30 selection:text-[#00ff41]">
+    <!-- Background Assets -->
+    <div class="background-mesh absolute inset-0 z-0 opacity-40"></div>
+    <div class="scanlines absolute inset-0 z-[1] pointer-events-none opacity-30"></div>
 
+    <!-- LANDING SCREEN -->
+    <div id="screen-landing" class="screen active flex flex-col items-center justify-center cursor-pointer" onclick="showLogin()">
+        <h1 class="text-3xl md:text-5xl font-bold tracking-[0.5rem] text-[#00ff41] text-glow border-2 border-[#00ff41] py-8 px-16 bg-black/80 shadow-[inset_0_0_20px_rgba(0,255,65,0.2)] uppercase fade-in">
+            CLICK TO ENTER
+        </h1>
+        <p class="mt-8 text-[#00ff41]/50 text-xs tracking-[0.2em] font-bold uppercase animate-pulse-custom">
+            CONNECTION: ENCRYPTED
+        </p>
+    </div>
+
+    <!-- LOGIN SCREEN -->
+    <div id="screen-login" class="screen flex flex-col items-center justify-center p-4">
+        <div id="login-card" class="glass-terminal w-full max-w-[450px] p-10 flex flex-col items-center fade-in">
+            <div class="text-[0.8rem] opacity-70 uppercase tracking-[2px] border-b border-glass-border pb-2 mb-5 w-full">
+                System // Network / Nodes
+            </div>
+            <h2 class="text-2xl font-bold mb-8 tracking-wider uppercase">Proxies</h2>
+            
+            <p class="text-[0.7rem] mb-3 opacity-80 uppercase font-bold self-start">
+                ENTER SECURE ACCESS KEY:
+            </p>
+            
+            <form onsubmit="handleLogin(event)" class="w-full">
+                <input
+                    id="password-input"
+                    type="password"
+                    placeholder="********"
+                    autocomplete="off"
+                    class="w-full bg-transparent border border-[#00ff41] text-[#00ff41] p-3 text-xl outline-none mb-5 text-center shadow-[inset_0_0_5px_rgba(0,255,65,0.2)] placeholder:opacity-30"
+                />
+                <button
+                    type="submit"
+                    class="w-full bg-[#00ff41] text-black font-bold py-3 uppercase transition-all hover:bg-white hover:text-black hover:shadow-[0_0_15px_#00ff41] active:translate-y-0.5"
+                >
+                    Execute
+                </button>
+            </form>
+
+            <p id="error-msg" class="hidden mt-5 text-[#ff3e3e] text-[0.9rem] font-bold uppercase animate-pulse">
+                INVALID KEYCARD. UPLINK DENIED.
+            </p>
+        </div>
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div id="screen-result" class="screen flex flex-col bg-black/40 backdrop-blur-sm p-4 md:p-8">
+        <div class="w-full max-w-4xl mx-auto flex flex-col h-full fade-in">
+            <div class="flex items-center justify-between border-b border-glass-border pb-4 mb-8">
+                <div class="flex items-center gap-3 text-[#00ff41]">
+                    <i data-lucide="terminal" class="h-4 w-4"></i>
+                    <span class="text-[0.8rem] opacity-70 uppercase tracking-widest font-bold">Root@SecureShell: ~/Proxies</span>
+                </div>
+                <div class="text-[0.8rem] opacity-50 uppercase tracking-widest font-bold">
+                    ENCRYPTED_SESSION: 492
+                </div>
+            </div>
+
+            <div class="flex-1 flex flex-col justify-center">
+                <div class="text-[0.9rem] mb-12 space-y-2 opacity-80 font-bold">
+                    <p># SCANNING GLOBAL SUBNETS...</p>
+                    <p># DECRYPTING LOCAL NODES...</p>
+                    <p class="text-[#00ff41]"># ACCESS GRANTED. STATUS REPORT BELOW.</p>
+                </div>
+
+                <div class="glass-terminal p-8 md:p-12 text-center relative overflow-hidden group">
+                    <div class="animate-scan"></div>
+                    
+                    <h3 class="text-[#ff3e3e] text-2xl font-bold mb-4 uppercase tracking-tighter">
+                        ERROR: NO PROXIES FOUND
+                    </h3>
+                    <div class="h-[2px] w-12 bg-[#00ff41]/20 mx-auto mb-6"></div>
+                    <p class="text-[#00ff41]/60 text-sm leading-relaxed max-w-sm mx-auto uppercase">
+                        THE SCANNING NETWORK REPORTS ZERO ACTIVE PROXY NODES IN YOUR LOCAL SUBNET. SECURITY COVERAGE: 0%.
+                    </p>
+                </div>
+
+                <div class="mt-12 flex justify-between items-center opacity-40 text-[0.7rem] uppercase font-bold tracking-[0.2em]">
+                    <button onclick="logoff()" class="hover:text-[#00ff41] transition-colors">
+                        [ TERMINAL_EXIT ]
+                    </button>
+                    <span>UPLINK_STATUS_NULL</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>

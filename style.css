@@ -1,0 +1,98 @@
+body {
+    background-color: #050805;
+    color: #00ff41;
+    font-family: "Courier Prime", monospace;
+    cursor: crosshair;
+    overflow: hidden;
+    margin: 0;
+    height: 100vh;
+}
+
+.text-glow {
+    text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+}
+
+.glass-terminal {
+    background: rgba(20, 30, 20, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.scanlines {
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+    ), linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.06),
+        rgba(0, 255, 0, 0.02),
+        rgba(0, 255, 0, 0.06)
+    );
+    background-size: 100% 4px, 3px 100%;
+}
+
+.background-mesh {
+    background: 
+        radial-gradient(circle at 20% 30%, #003300 0%, transparent 40%),
+        radial-gradient(circle at 80% 70%, #001a00 0%, transparent 40%);
+    filter: blur(100px);
+}
+
+@keyframes scan {
+    from { top: -100px; }
+    to { top: 100%; }
+}
+
+.animate-scan {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background: linear-gradient(to bottom, transparent, rgba(0, 255, 65, 0.1), transparent);
+    animation: scan 3s linear infinite;
+    pointer-events: none;
+}
+
+.screen {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    z-index: 10;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Fade animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+.animate-pulse-custom {
+    animation: pulse 2s infinite;
+}
+
+.shake {
+    animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
